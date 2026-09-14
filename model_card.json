@@ -1,0 +1,50 @@
+{
+  "name": "Physics-Assisted Extra Trees, cryogenic flow boiling CHF",
+  "paper": "IJHMT HMT-D-26-03728",
+  "version": "2026-09 revision",
+  "estimator": "sklearn.ensemble.ExtraTreesRegressor",
+  "hyperparameters": {
+    "n_estimators": 897,
+    "min_samples_split": 5,
+    "min_samples_leaf": 1,
+    "max_features": null
+  },
+  "features": [
+    "P_r",
+    "x_in",
+    "Re_fo",
+    "Re_go",
+    "Pr_f",
+    "Pr_g",
+    "We_fo",
+    "We_go",
+    "Fr_fo",
+    "Fr_go",
+    "Su_f",
+    "Su_g",
+    "Bd",
+    "visc_ratio",
+    "Ja",
+    "rho_ratio",
+    "Ld_ratio",
+    "theta",
+    "g_ratio"
+  ],
+  "n_features": 19,
+  "target": "r = log1p(CHF) - log1p(q_physics)",
+  "reconstruction": "CHF = expm1(log1p(q_physics) + r_hat)",
+  "baseline_correlation": "Ganesan et al., clipped at 1 W/m2",
+  "training_set": {
+    "n": 2438,
+    "description": "all terrestrial datapoints, four cryogens"
+  },
+  "held_out_performance": {
+    "protocol": "80/20 fluid-stratified split, same hyperparameters, evaluated on the 488-datapoint test partition",
+    "MAPE_pct": 13.93,
+    "R2": 0.758,
+    "xi30_pct": 88.7
+  },
+  "fit_seconds": 0.5,
+  "sklearn": "1.7.2",
+  "python": "3.10.10"
+}
